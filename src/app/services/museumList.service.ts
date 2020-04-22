@@ -211,15 +211,15 @@ export class MuseumListService {
     date_appellation: "01/02/2003",
     nomdep: "BOUCHES DU RHONE"
   }
-]
+  ]
 
-getMuseumByRef_musee(ref_musee:any) {
-  const musee = this.museums.find(
-    (s) => {
-      return s.ref_musee === ref_musee;
-    }
-  );
-  return musee;
-}
+  getMuseumByRef_musee(refMuseum: string) {
+    const musee = this.museums.find(
+      (s) => {
+        return s.ref_musee === refMuseum;
+      }
+    );
+    return musee;
+  }
 
 }

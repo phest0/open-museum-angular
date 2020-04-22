@@ -9,11 +9,10 @@ import { IndexComponent } from './index/index.component';
 import { AddMuseumComponent } from './add-museum/add-museum.component';
 import { MuseumDetailComponent } from './museum-detail/museum-detail.component';
 
-
-const appRoutes:Routes = [
-  {path:'add', component: AddMuseumComponent},
-  {path: '', component: IndexComponent},
-  {path: 'museum/:ref_musee', component: MuseumDetailComponent}
+const appRoutes: Routes = [
+  { path: 'add', component: AddMuseumComponent },
+  { path: '', component: IndexComponent },
+  { path: 'museum/:refMuseum', component: MuseumDetailComponent }
 ];
 
 @NgModule({
@@ -28,7 +27,7 @@ const appRoutes:Routes = [
     BrowserModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [ MuseumListService ],
+  providers: [MuseumListService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
