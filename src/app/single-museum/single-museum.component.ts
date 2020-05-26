@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MuseumListService } from "../services/museumList.service";
+import { DataServiceService } from '../services/data-service.service';
+import { Museum } from '../models/museum/museum';
 
 @Component({
   selector: 'app-single-museum',
@@ -9,19 +10,9 @@ import { MuseumListService } from "../services/museumList.service";
 
 export class SingleMuseumComponent implements OnInit {
   // variables
-  @Input() museumTitle: string;
-  @Input() adress: string;
-  @Input() ville: string;
-  @Input() codePostal: string;
-  @Input() tel: string;
-  @Input() webPage: string;
-  @Input() ouverturePeriode: string;
-  @Input() refMuseum: string;
+  @Input() museums: Museum;
 
-  getMuseumTitle() {
-    return this.museumTitle;
-  }
-  constructor(private museumListService: MuseumListService) {
+  constructor(private dataService: DataServiceService) {
   }
 
   ngOnInit() {

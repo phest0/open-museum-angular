@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -12,7 +13,7 @@ import { MuseumDetailComponent } from './museum-detail/museum-detail.component';
 const appRoutes: Routes = [
   { path: 'add', component: AddMuseumComponent },
   { path: '', component: IndexComponent },
-  { path: 'museum/:refMuseum', component: MuseumDetailComponent }
+  { path: 'museum/:museumId', component: MuseumDetailComponent }
 ];
 
 @NgModule({
@@ -25,9 +26,10 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
-  providers: [MuseumListService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

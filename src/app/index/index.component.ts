@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MuseumListService } from '../services/museumList.service';
 
+import { DataServiceService } from '../services/data-service.service';
+import { Museum } from '../models/museum/museum';
 @Component({
   selector: 'app-index',
   templateUrl: './index.component.html',
@@ -8,13 +9,24 @@ import { MuseumListService } from '../services/museumList.service';
 })
 
 export class IndexComponent implements OnInit {
-  museums: any[];
-  constructor(private museumListService: MuseumListService) {
+
+  public museums: Museum[];
+
+  constructor(private dataService: DataServiceService) {
 
   }
 
   ngOnInit() {
-    this.museums = this.museumListService.museums
+
+    this.dataService.fetchMuseums()
+      .subscribe(
+        res => {
+          console.log(res);
+          this.museums = res;
+        },
+        error => {
+          console.log(error);
+        });
   }
 
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { MuseumListService } from "../services/museumList.service";
 import { ActivatedRoute } from '@angular/router';
+import { DataServiceService } from '../services/data-service.service';
+import { Museum } from '../models/museum/museum';
 
 @Component({
   selector: 'app-museum-detail',
@@ -8,28 +9,22 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./museum-detail.component.css']
 })
 export class MuseumDetailComponent implements OnInit {
-  refMuseum: string;
-  museumTitle: string;
-  adress: string;
-  ville: string;
-  codePostal: string;
-  tel: string;
-  webPage: string;
-  ouverturePeriode: string;
-  fax: string;
 
-  constructor(private museumListService: MuseumListService, private route: ActivatedRoute) { }
+  museum: Museum;
+
+  constructor(private dataService: DataServiceService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    const refMuseum = this.route.snapshot.params['refMuseum'];
-    this.museumTitle = this.museumListService.getMuseumByRef_musee(refMuseum).nom_du_musee;
-    this.adress = this.museumListService.getMuseumByRef_musee(refMuseum).adr;
-    this.ville = this.museumListService.getMuseumByRef_musee(refMuseum).ville;
-    this.codePostal = this.museumListService.getMuseumByRef_musee(refMuseum).cp;
-    this.tel = this.museumListService.getMuseumByRef_musee(refMuseum).telephone;
-    this.webPage = this.museumListService.getMuseumByRef_musee(refMuseum).sitweb;
-    this.ouverturePeriode = this.museumListService.getMuseumByRef_musee(refMuseum).periode_ouverture;
-    this.fax = this.museumListService.getMuseumByRef_musee(refMuseum).fax;
+    const museumId: string = this.route.snapshot.params['museumId'];
+    this.dataService.fetchMuseumById(museumId)
+      .subscribe(
+        res => {
+          console.log(res);
+          this.museum = res;
+        },
+        error => {
+          console.log(error);
+        }
+      );
   }
-
 }

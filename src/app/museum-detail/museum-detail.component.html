@@ -1,4 +1,4 @@
-<h1 class="card-title">{{ museumTitle }}</h1>
+<h1 class="card-title" *ngIf="museum.name">{{ museum.name }}</h1>
 <div class="card mb-3">
   <div class="row no-gutters">
     <div class="col-md-4">
@@ -6,13 +6,14 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <p class="card-text">Adresse : {{ adress }}</p>
-        <p>Ville : {{ ville }}</p>
-        <p>CP : {{ codePostal }}</p>
-        <p>tel :<a href="tel:{{ tel }}"> {{ tel }}</a></p>
-        <p>fax: {{ fax }}</p>
-        <p>Site internet : <a href="{{ webPage }}">{{ webPage }}</a></p>
-        <p>Période d'ouverture : {{ ouverturePeriode }}</p>
+        <p class="card-text" *ngIf="museum.address">Adresse : {{ museum.address }}</p>
+        <p *ngIf="museum.city">Ville : {{ museum.city }}</p>
+        <p *ngIf="museum.cp">CP : {{ museum.cp }}</p>
+        <p *ngIf="museum.telephone">tel :<a *ngIf="museum.telephone" href="tel:{{ museum.telephone }}">
+            {{ museum.telephone }}</a></p>
+        <p *ngIf="museum.fax">fax: {{ museum.fax }}</p>
+        <p *ngIf="museum.website">Site internet : <a href="{{ museum.website }}">{{ museum.website }}</a></p>
+        <p *ngIf="museum.opening">Période d'ouverture : {{ museum.opening }}</p>
         <a href="" routerLink='/' class="d-flex justify-content-end text-decoration-none" role="button"
           aria-pressed="true">⬅️ Retour à la liste des musées</a>
       </div>
