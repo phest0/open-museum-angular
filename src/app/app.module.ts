@@ -9,6 +9,7 @@ import { SingleMuseumComponent } from './single-museum/single-museum.component';
 import { IndexComponent } from './index/index.component';
 import { AddMuseumComponent } from './add-museum/add-museum.component';
 import { MuseumDetailComponent } from './museum-detail/museum-detail.component';
+import { MapComponent } from './map/map.component';
 
 const appRoutes: Routes = [
   { path: 'add', component: AddMuseumComponent },
@@ -23,6 +24,7 @@ const appRoutes: Routes = [
     IndexComponent,
     AddMuseumComponent,
     MuseumDetailComponent,
+    MapComponent,
   ],
   imports: [
     BrowserModule,
